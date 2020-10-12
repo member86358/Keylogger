@@ -2,22 +2,26 @@ import pynput
 from pynput.keyboard import Key, Listener, GlobalHotKeys
 from pynput import keyboard
 import logging
-logging.basicConfig(level=logging.INFO)
+import datetime
+import time
+import datetime
+logging.basicConfig(filename='debug.log', filemode='w', level=logging.DEBUG,format='%(asctime)s %(message)s')
 count = 0
 if __name__ == "__main__":
     def main():
         def write_file(count):
-            with open("log.txt", "r+") as f:
-                f.write("Amount of times <ctrl>+l pressed: "+str(count))
+            with open("data.txt", "r+") as f:
+                logging.debug("Saving to data.txt")
+                localtime = str(datetime.datetime.now())
+                f.write(localtime + " Amount of times <ctrl>+l pressed: "+str(count))
                 f.close()
 
         def on_activate():
-            logging.info("Ctrl + l pressed")
             global count
             count += 1
             write_file(count)
 
-        hotkey = keyboard.HotKey(keyboard.HotKey.parse('<ctrl>+l'),on_activate)
+        hotkey = keyboard.HotKey(keyboard.HotKey.parse('<cmd>'),on_activate)
 
         def for_canonical(f):
             return lambda k: f(l.canonical(k))       

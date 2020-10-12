@@ -1,0 +1,3 @@
+([('main',
+   '/Users/davidragnarsson/Documents/VSCode/Keylogger/Keylogger/dist/main',
+   'EXECUTABLE')],)
