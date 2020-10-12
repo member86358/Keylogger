@@ -1,7 +1,7 @@
 # Keylogger
 
-## Beskrivning
+Beskrivning
 Loggar antal ctrl + l till log.txt.
 
-## Kräver
+Kräver
 pynput (pip install pynput)
